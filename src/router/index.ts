@@ -53,6 +53,11 @@ const routes: Array<RouteConfig> = [
     ]
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: 'login' */ '@/views/login/index.vue')
+  },
+  {
     path: '*',
     name: 'error',
     component: () => import(/* webpackChunkName: 'error-page' */ '@/views/error-page/index.vue')

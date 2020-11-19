@@ -4,7 +4,9 @@
           <Aside/>
         </el-aside>
         <el-container>
-          <el-header>Header</el-header>
+          <el-header>
+            <Header/>
+          </el-header>
           <el-main>Main</el-main>
         </el-container>
       </el-container>
@@ -12,11 +14,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import Aside from './components/Aside.vue'
+import Header from './components/Header.vue'
 
 export default Vue.extend({
   name: 'Layout',
   components: {
-    Aside
+    Aside,
+    Header
   }
 })
 </script>
@@ -32,7 +36,9 @@ export default Vue.extend({
 .el-main {
     background-color: #E9EEF3;
 }
-.el-header, .el-footer {
-    background-color: #B3C0D1;
+.el-header{
+    background-color: #fff;
+
 }
+
 </style>
