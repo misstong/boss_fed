@@ -1,15 +1,12 @@
 <template>
   <div id="app">
-      <el-button>默认按钮</el-button>
-      <div class="text">hhh</div>
     <router-view/>
   </div>
 </template>
+<script lang="ts">
+import Vue from 'vue'
 
-<style lang="scss" scoped>
-// @import '~@/styles/variables.scss';
-
-.text{
-  color: $success-color
-}
-</style>
+export default Vue.extend({
+  name: 'App'
+})
+</script>
