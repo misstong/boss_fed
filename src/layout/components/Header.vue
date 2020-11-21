@@ -13,15 +13,41 @@
 			</span>
 			<el-dropdown-menu slot="dropdown">
 				<el-dropdown-item>用户id</el-dropdown-item>
-				<el-dropdown-item divided>退出</el-dropdown-item>
+				<el-dropdown-item divided @click.native="handleLogout">退出</el-dropdown-item>
 			</el-dropdown-menu>
 		</el-dropdown>
 	</div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import { getUserInfo } from '@/services/user'
 export default Vue.extend({
-  name: 'Header'
+	name: 'Header',
+	data () {
+		return {
+			userInfo: {}
+		}
+	},
+	created () {
+		this.loaduserInfo()
+	},
+	methods: {
+		async loaduserInfo () {
+			const { data } = await getUserInfo()
+			this.userInfo = data.userInfo
+		},
+		async handleLogout () {
+			this.$confirm('logout?', 'hh', {
+				confirmButtonText: 'OK',
+				cancelButtonText: 'cancel'
+			}).then(() => {
+				this.$store.commit('setUser', null)
+				this.$router.push('/login')
+			}).catch(() => {
+				this.$message.info('cancel logout')
+			})
+		}
+	}
 })
 </script>
 <style lang="scss" scoped>

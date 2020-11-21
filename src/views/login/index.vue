@@ -40,9 +40,7 @@ export default Vue.extend({
                 this.$message.error(data.message)
             } else {
                 this.$store.commit('setUser', data.content)
-                this.$router.push({
-                    name: 'home'
-                })  
+                this.$router.push(this.$route.query.redirct as string || '/')
                 this.$message.success('登录成功')
             }
           } catch (e) {
