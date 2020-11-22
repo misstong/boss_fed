@@ -29,7 +29,7 @@ export default Vue.extend({
 		}
 	},
 	created () {
-		this.loaduserInfo()
+		// this.loaduserInfo()
 	},
 	methods: {
 		async loaduserInfo () {
