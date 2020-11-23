@@ -63,7 +63,6 @@ export default Vue.extend({
     getCheckedKeys (menus: any) {
       menus.forEach((menu: any) => {
         if (menu.selected) {
-          // this.checkedKeys.push(menu.id as never)
           this.checkedKeys = [...this.checkedKeys, menu.id] as any
         }
         if (menu.subMenuList) {
@@ -79,8 +78,6 @@ export default Vue.extend({
 
     async onSave () {
       const menuIdList = (this.$refs['menu-tree'] as Tree).getCheckedKeys()
-      // 拿到选中节点的数据 id 列表
-      // 请求提交保存
       await allocateRoleMenus({
         roleId: this.roleId,
         menuIdList

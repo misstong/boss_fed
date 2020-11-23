@@ -66,7 +66,6 @@ export default Vue.extend({
           category.children.push(r)
         }
       })
-      // 修改顶层分类 ID：因为分类 ID 和资源 ID 冲突
       resourceCategories.forEach((item: any) => {
         item.id = Math.random()
       })
