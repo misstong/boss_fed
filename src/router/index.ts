@@ -17,53 +17,83 @@ const routes: Array<RouteConfig> = [
       {
         path: '/', // 默认子路由
         name: 'home',
-        component: () => import(/* webpackChunkName: 'home' */ '@/views/home/index.vue')
+        component: () => import(/* webpackChunkName: 'home' */ '@/views/home/index.vue'),
+        meta: {
+          fullName: '课程管理'
+        }
       },
       {
         path: '/role',
         name: 'role',
-        component: () => import(/* webpackChunkName: 'role' */ '@/views/role/index.vue')
+        component: () => import(/* webpackChunkName: 'role' */ '@/views/role/index.vue'),
+        meta: {
+          fullName: '角色管理'
+        }
       },
       {
         path: '/menu',
         name: 'menu',
-        component: () => import(/* webpackChunkName: 'menu' */ '@/views/menu/index.vue')
+        component: () => import(/* webpackChunkName: 'menu' */ '@/views/menu/index.vue'),
+        meta: {
+          fullName: '菜单管理'
+        }
       },
       {
         path: '/resource',
         name: 'resource',
-        component: () => import(/* webpackChunkName: 'resource' */ '@/views/resource/index.vue')
+        component: () => import(/* webpackChunkName: 'resource' */ '@/views/resource/index.vue'),
+        meta: {
+          fullName: '资源管理'
+        }
       },
       {
         path: '/course',
         name: 'course',
-        component: () => import(/* webpackChunkName: 'course' */ '@/views/course/index.vue')
+        component: () => import(/* webpackChunkName: 'course' */ '@/views/course/index.vue'),
+        meta: {
+          fullName: '课程管理'
+        }
       },
       {
         path: '/user',
         name: 'user',
-        component: () => import(/* webpackChunkName: 'user' */ '@/views/user/index.vue')
+        component: () => import(/* webpackChunkName: 'user' */ '@/views/user/index.vue'),
+        meta: {
+          fullName: '用户管理'
+        }
       },
       {
         path: '/advert',
         name: 'advert',
-        component: () => import(/* webpackChunkName: 'advert' */ '@/views/advert/index.vue')
+        component: () => import(/* webpackChunkName: 'advert' */ '@/views/advert/index.vue'),
+        meta: {
+          fullName: '广告管理'
+        }
       },
       {
         path: '/advert-space',
         name: 'advert-space',
-        component: () => import(/* webpackChunkName: 'advert-space' */ '@/views/advert-space/index.vue')
+        component: () => import(/* webpackChunkName: 'advert-space' */ '@/views/advert-space/index.vue'),
+        meta: {
+          fullName: '广告位管理'
+        }
       },
       {
         path: '/menu/create',
         name: 'menu-create',
-        component: () => import(/* webpackChunkName: 'menu-create-edit' */ '@/views/menu/create.vue')
+        component: () => import(/* webpackChunkName: 'menu-create-edit' */ '@/views/menu/create.vue'),
+        meta: {
+          fullName: '课程管理'
+        }
       },
       {
         path: '/menu/:id/edit',
         name: 'menu-edit',
         props: true,
-        component: () => import(/* webpackChunkName: 'menu-create-edit' */ '@/views/menu/edit.vue')
+        component: () => import(/* webpackChunkName: 'menu-create-edit' */ '@/views/menu/edit.vue'),
+        meta: {
+          fullName: '课程管理'
+        }
       },
       {
         path: '/role/:roleId/alloc-menu',
@@ -80,7 +110,10 @@ const routes: Array<RouteConfig> = [
       {
         path: '/course/create',
         name: 'course-create',
-        component: () => import(/* webpackChunkName: 'course-create' */ '@/views/course/create.vue')
+        component: () => import(/* webpackChunkName: 'course-create' */ '@/views/course/create.vue'),
+        meta: {
+          fullName: '课程管理'
+        }
       },
       {
         path: '/course/:courseId/edit',

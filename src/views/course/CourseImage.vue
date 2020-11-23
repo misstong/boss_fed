@@ -13,7 +13,7 @@
             :show-file-list="false"
             :before-upload="beforeAvatarUpload"
             :http-request="handleUpload">
-            <img v-if="imageUrl" class="avatar">
+            <img v-if="value" :src="value" class="avatar">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
     </div>
@@ -23,7 +23,7 @@ import { uploadCourseImage } from '@/services/course'
 import Vue from 'vue'
 export default Vue.extend({
     props: {
-        imageUrl: {
+        value: {
             type: String
         },
         limit: {
@@ -61,6 +61,7 @@ export default Vue.extend({
               if (data.code === '000000') {
                   this.isUploading = false
                   this.percentage = 0
+                  console.log('name', data.data.name)
                   this.$emit('input', data.data.name)
               } else {
                   this.$message.error('上传失败')
@@ -92,5 +93,10 @@ export default Vue.extend({
     height: 178px;
     line-height: 178px;
     text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
   }
 </style>

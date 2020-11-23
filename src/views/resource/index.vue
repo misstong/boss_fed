@@ -2,7 +2,7 @@
     <div>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <el-form ref="form" :model="form" label-width="80px">
+        <el-form ref="form" :model="form" label-width="80px" :inline="true">
           <el-form-item prop="name" label="资源名称">
             <el-input v-model="form.name"></el-input>
           </el-form-item>
@@ -35,6 +35,11 @@
             >重置</el-button>
           </el-form-item>
         </el-form>
+      </div>
+
+      <div class="operation">
+        <el-button @click="showAddDialog">添加</el-button>
+        <el-button>资源分类</el-button>
       </div>
       <el-table
         :data="resources"
@@ -92,6 +97,33 @@
         :total="totalCount">
       </el-pagination>
     </el-card>
+    <el-dialog  :visible.sync="dialogVisible" title="添加资源">
+          <div slot="footer" class="dialog-footer">
+              <el-button @click="dialogVisible = false">取 消</el-button>
+              <el-button type="primary" @click="addResource">确 定</el-button>
+          </div>
+          <el-form :model="resourceForm"
+           class="demo-form-inline"
+            label-position="left"
+             label-width="80px">
+          <el-form-item label="资源名称">
+            <el-input v-model="resourceForm.name"></el-input>
+          </el-form-item>
+          <el-form-item label="资源路径">
+            <el-input v-model="resourceForm.url"></el-input>
+          </el-form-item>
+          <el-form-item label="资源分类">
+            <el-select v-model="resourceForm.categoryId">
+              <el-option :label="resourceCate.name" :value="resourceCate.id"
+               v-for="resourceCate in resourceCategories"
+               :key="resourceCate.id" ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="描述">
+            <el-input v-model="resourceForm.url"></el-input>
+          </el-form-item>
+        </el-form> 
+    </el-dialog>  
     </div>
 </template>
 <script lang="ts">
@@ -114,19 +146,32 @@ export default Vue.extend({
             },
             totalCount: 0,
             resourceCategories: [],
-            isLoading: true
+            isLoading: true,
+            dialogVisible: false,
+            resourceForm: {
+              name: '',
+              categoryId: 0,
+	            url: '',
+	            description: ''
+            }
         }
     },
     created () {
-        // this.loadResources()
-        // this.loadResourceCategories()
+        this.loadResources()
+        this.loadResourceCategories()
     },
     methods: {
         async loadResourceCategories () {
             const { data } = await getResourceCategories()
             this.resourceCategories = data.data
         },
-
+        showAddDialog () {
+          this.dialogVisible = true
+        },
+        addResource () {
+          this.dialogVisible = true
+          console.log(this.dialogVisible)
+        },
         async loadResources () {
             this.isLoading = true
             const { data } = await getResourcePages(this.form)
@@ -167,3 +212,8 @@ export default Vue.extend({
     }
 })
 </script>
+<style lang="scss" scoped>
+.operation {
+  margin-bottom: 10px;
+}
+</style>

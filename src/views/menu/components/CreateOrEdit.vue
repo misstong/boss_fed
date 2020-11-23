@@ -63,15 +63,18 @@ export default Vue.extend({
         return {
             form: {
                 parentId: -1,
-                name: '123',
-                href: '123',
-                icon: '123',
+                name: '',
+                href: '',
+                icon: '',
                 orderNum: 0,
-                description: '123',
+                description: '',
                 shown: false
             },
             parentMenuList: []
         }
+    },
+    created () {
+        this.loadMenuInfo()
     },
     methods: {
         async onSubmit () {

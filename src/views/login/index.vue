@@ -34,9 +34,10 @@ export default Vue.extend({
             //     headers: { 'content-type': 'x-www-form-urlencoded' },
             //     data: qs.stringify(this.form)
             // })
+            console.log('form', this.form)
             const { data } = await login(this.form)
             
-            if (data.state === 1) {
+            if (data.state !== 1) {
                 this.$message.error(data.message)
             } else {
                 this.$store.commit('setUser', data.content)

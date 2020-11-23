@@ -6,6 +6,7 @@
                 <span>数据筛选</span>
             </div>
             <el-form
+                :inline="true"
                 ref="form"
                 label-position="left"
                 label-width="70px"
@@ -137,7 +138,7 @@ export default Vue.extend({
         }
     },
     created () {
-        // this.loadCourses()
+        this.loadCourses()
     },
     methods: {
         async loadCourses () {

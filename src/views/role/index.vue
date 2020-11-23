@@ -83,7 +83,7 @@
             </el-table>
         </el-card>
         <el-dialog
-            title="isEdit ? '编辑角色' : '添加角色'"
+            :title="isEdit ? '编辑角色' : '添加角色'"
             :visible.sync="dialogVisible"
             width="50%">
             <create-or-edit
@@ -120,6 +120,9 @@ export default Vue.extend({
             roleId: null,
             isEdit: false
         }
+    },
+    created () {
+        this.loadRoles()
     },
     methods: {
         async loadRoles () {

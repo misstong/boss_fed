@@ -93,7 +93,7 @@ export default Vue.extend({
          }
      },
      created () {
-        //  this.loadAllMenus()
+         this.loadAllMenus()
      }
 })
 </script>

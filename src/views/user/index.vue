@@ -1,7 +1,7 @@
 <template>
   <el-card>
     <div slot="header">
-      <el-form :model="filterParams" ref="filter-form">
+      <el-form :model="filterParams" ref="filter-form" :inline="true">
         <el-form-item label="手机号" prop="phone">
           <el-input v-model="filterParams.phone"></el-input>
         </el-form-item>
@@ -128,7 +128,7 @@ export default Vue.extend({
   },
 
   created () {
-    // this.loadUsers()
+    this.loadUsers()
   },
 
   methods: {

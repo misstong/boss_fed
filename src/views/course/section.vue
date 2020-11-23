@@ -47,7 +47,12 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-    // props:
+    props: {
+        courseId: {
+        type: [String, Number],
+        required: true
+        }
+    },
     data () {
         return {
             data: [{
@@ -86,13 +91,31 @@ export default Vue.extend({
             }]
             }],
             defaultProps: {
-            children: 'children',
-            label: 'label'
+                children: 'children',
+                label: 'label'
             },
             course: {},
             sections: [],
             isAddSectionShow: false,
-            isLoading: false
+            isLoading: false,
+            section: {
+                courseId: this.courseId,
+                sectionName: '',
+                description: '',
+                orderNum: 0,
+                status: 0
+            },
+            lessson: {
+                courseId: this.courseId,
+                sectionId: undefined,
+                sectionName: '',
+                theme: '',
+                duration: 0,
+                isFree: false,
+                orderNum: 0,
+                status: 0
+            }
+
         }
     },
     methods: {
@@ -101,6 +124,14 @@ export default Vue.extend({
         },
         handleShowAddSection () {
             console.log('')
+            this.section = {
+                courseId: this.courseId,
+                sectionName: '',
+                description: '',
+                orderNum: 0,
+                status: 0
+            }
+            this.isAddSectionShow = true
         }
     }
 })

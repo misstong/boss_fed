@@ -7,10 +7,12 @@ interface User {
 }
 
 export const login = async (data: User) => {
+  console.log('form', qs.stringify(data))
    return request({
         url: '/front/user/login',
-        headers: { 'content-type': 'x-www-form-urlencoded' },
-        data: qs.stringify(data)
+        // headers: { 'content-type': 'x-www-form-urlencoded' },
+        data: qs.stringify(data),
+        method: 'POST'
     })
 }
 

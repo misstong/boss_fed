@@ -8,6 +8,7 @@
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b"
+            :collapse="isCollapse"
             router>
             <el-submenu index="1">
                 <template slot="title">
@@ -56,6 +57,12 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'Aside',
+  props: {
+    isCollapse: {
+        type: Boolean,
+        default: false
+    }
+  },
   methods: {
     handleOpen (key: string, keyPath: string) {
       console.log(key, keyPath)
