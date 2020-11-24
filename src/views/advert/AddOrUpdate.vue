@@ -35,11 +35,10 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="广告图片">
-                <el-upload
-                action="https://jsonplaceholder.typicode.com/posts/"
-                list-type="picture-card">
-                <i class="el-icon-plus"></i>
-                </el-upload>
+                <course-image
+                    v-model="form.img"
+                    :limit="5"
+                />
             </el-form-item>
             <el-form-item label="广告链接">
                 <el-input v-model="form.link"></el-input>
@@ -61,9 +60,13 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { saveOrUpdate, getSpaceById } from '@/services/advert-space'
+import { saveOrUpdate, getAdById } from '@/services/advert'
+import CourseImage from './CourseImage.vue'
 
 export default Vue.extend({
+    components: {
+        CourseImage
+    },
     data () {
         return {
             form: {
@@ -99,6 +102,9 @@ export default Vue.extend({
                 const { data } = await saveOrUpdate(this.form)
                 if (data.success) {
                     this.$message.success('添加成功')
+                    this.$router.push({
+                        name: 'advert'
+                    })
                 }
             } catch (e) {
 
@@ -107,10 +113,9 @@ export default Vue.extend({
         async loadAd () {
             if (this.isEdit) {
                 try {
-                    const { data } = await getSpaceById(this.id)
+                    const { data } = await getAdById(this.id)
                     if (data.success) {
-                        this.form.name = data.content.name
-                        this.form.id = data.content.id
+                        this.form = data.content
                     }
                 } catch (e) {
 

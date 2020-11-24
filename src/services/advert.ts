@@ -16,3 +16,20 @@ export const updateStatus = (data: any) => {
         }
     })
 }
+
+export const saveOrUpdate = (data: any) => {
+    return request({
+        url: '/front/ad/saveOrUpdate',
+        method: 'POST',
+        data
+    })
+}
+
+export const getAdById = (id: number) => {
+    return request({
+        url: '/front/ad/getAdById',
+        params: {
+            id
+        }
+    })
+}

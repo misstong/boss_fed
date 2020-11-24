@@ -46,3 +46,12 @@ export const getCourseById = (courseId: string | number) => {
     }
   })
 }
+
+export const getSectionAndLessonsById = (courseId: string | number) => {
+  return request({
+    url: '/boss/course/section/getSectionAndLesson',
+    params: {
+      courseId
+    }
+  })
+}

@@ -92,7 +92,8 @@ const routes: Array<RouteConfig> = [
         component: () => import(/* webpackChunkName: 'advert' */ '@/views/advert/updateAdvertise.vue'),
         meta: {
           fullName: '广告编辑'
-        }
+        },
+        props: true
       },
       {
         path: '/advert-space',
@@ -166,6 +167,12 @@ const routes: Array<RouteConfig> = [
         path: '/course/:courseId/section',
         name: 'course-section',
         component: () => import(/* webpackChunkName: 'course-section' */ '@/views/course/section.vue'),
+        props: true
+      },
+      {
+        path: '/course/:courseId/video',
+        name: 'course-video',
+        component: () => import(/* webpackChunkName: 'course-video' */ '@/views/course/video.vue'),
         props: true
       }
     ]

@@ -10,10 +10,11 @@
             v-else
             class="avatar-uploader"
             action="https://jsonplaceholder.typicode.com/posts/"
+            list-type="picture-card"
             :before-upload="beforeAvatarUpload"
             :http-request="handleUpload">
             <img v-if="value" :src="value" class="avatar">
-            <i v-else class="el-icon-plus"></i>
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
     </div>
 </template>
