@@ -53,7 +53,7 @@
                 <el-table-column
                     prop="id"
                     label="ID"
-                    width="">
+                    width="80">
                 </el-table-column>
                 <el-table-column
                     prop="courseName"
@@ -89,7 +89,7 @@
                 <el-table-column
                     prop=""
                     label="操作"
-                    width="">
+                    width="250">
                     <template slot-scope="scope">
                         <el-button
                             @click="$router.push({

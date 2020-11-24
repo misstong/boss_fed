@@ -17,7 +17,7 @@ const routes: Array<RouteConfig> = [
       {
         path: '/', // 默认子路由
         name: 'home',
-        component: () => import(/* webpackChunkName: 'home' */ '@/views/home/index.vue'),
+        component: () => import(/* webpackChunkName: 'home' */ '@/views/course/index.vue'),
         meta: {
           fullName: '课程管理'
         }
@@ -47,6 +47,14 @@ const routes: Array<RouteConfig> = [
         }
       },
       {
+        path: '/resourceCategory',
+        name: 'resourceCategory',
+        component: () => import(/* webpackChunkName: 'resource' */ '@/views/resource/resourceCategory.vue'),
+        meta: {
+          fullName: '资源分类'
+        }
+      },
+      {
         path: '/course',
         name: 'course',
         component: () => import(/* webpackChunkName: 'course' */ '@/views/course/index.vue'),
@@ -71,11 +79,44 @@ const routes: Array<RouteConfig> = [
         }
       },
       {
+        path: '/addAdvertise',
+        name: 'addAdvertise',
+        component: () => import(/* webpackChunkName: 'advert' */ '@/views/advert/addAdvertise.vue'),
+        meta: {
+          fullName: '广告添加'
+        }
+      },
+      {
+        path: '/updateAdvertise/:id',
+        name: 'updateAdvertise',
+        component: () => import(/* webpackChunkName: 'advert' */ '@/views/advert/updateAdvertise.vue'),
+        meta: {
+          fullName: '广告编辑'
+        }
+      },
+      {
         path: '/advert-space',
         name: 'advert-space',
         component: () => import(/* webpackChunkName: 'advert-space' */ '@/views/advert-space/index.vue'),
         meta: {
           fullName: '广告位管理'
+        }
+      },
+      {
+        path: '/updateAdvertiseSpace/:id',
+        name: 'updateAdvertiseSpace',
+        component: () => import(/* webpackChunkName: 'advert-space' */ '@/views/advert-space/updateAdvertiseSpace.vue'),
+        meta: {
+          fullName: '广告位编辑'
+        },
+        props: true
+      },
+      {
+        path: '/addAdvertiseSpace',
+        name: 'addAdvertiseSpace',
+        component: () => import(/* webpackChunkName: 'advert-space' */ '@/views/advert-space/addAdvertiseSpace.vue'),
+        meta: {
+          fullName: '广告位添加'
         }
       },
       {

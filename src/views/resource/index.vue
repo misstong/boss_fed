@@ -39,7 +39,9 @@
 
       <div class="operation">
         <el-button @click="showAddDialog">添加</el-button>
-        <el-button>资源分类</el-button>
+        <el-button @click="$router.push({
+          name: 'resourceCategory'
+        })">资源分类</el-button>
       </div>
       <el-table
         :data="resources"
@@ -120,7 +122,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="描述">
-            <el-input v-model="resourceForm.url"></el-input>
+            <el-input v-model="resourceForm.description"></el-input>
           </el-form-item>
         </el-form> 
     </el-dialog>  
@@ -128,7 +130,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { getResourcePages } from '@/services/resource'
+import { getResourcePages, saveOrUpdate } from '@/services/resource'
 import { getResourceCategories } from '@/services/resource-category'
 import { Form } from 'element-ui'
 
@@ -168,9 +170,16 @@ export default Vue.extend({
         showAddDialog () {
           this.dialogVisible = true
         },
-        addResource () {
-          this.dialogVisible = true
-          console.log(this.dialogVisible)
+        async addResource () {
+          try {
+            const { data } = await saveOrUpdate(this.resourceForm)
+            if (data) {
+              this.dialogVisible = false
+              this.$message.success('添加成功')
+            }
+          } catch (e) {
+            this.$message.error(e)
+          }
         },
         async loadResources () {
             this.isLoading = true

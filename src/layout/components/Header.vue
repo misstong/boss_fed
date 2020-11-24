@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-		<span @click="toggleCollapse">
+		<span @click="toggleCollapse" class="toggle">
 				<i v-if="!isCollapse" class="el-icon-s-fold"></i>
 		    <i v-else class="el-icon-s-unfold"></i>
     </span>
@@ -82,5 +82,8 @@ export default Vue.extend({
 }
 .userInfo {
 	margin-left: auto;
+}
+.header .toggle {
+	cursor: pointer;
 }
 </style>

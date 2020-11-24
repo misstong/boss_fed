@@ -2,9 +2,7 @@
     <div>
         <el-card>
             <div slot="header" class="clearfix">
-                <el-button @click="$router.push({
-                    name: 'addAdvertiseSpace'
-                })">添加广告位</el-button>
+                <el-button @click="dialogVisible = true">添加</el-button>
             </div>
             <el-table
                 :data="resourceCategory"
@@ -31,13 +29,11 @@
                     prop=""
                     label="操作">
                     <template slot-scope="scope">
-                        <el-button @click="$router.push({
-                            name: 'updateAdvertiseSpace',
-                            params: {
-                                id: scope.row.id
-                            }
-                        })">
+                        <el-button @click="handleEdit(scope.row)">
                             编辑
+                        </el-button>
+                        <el-button @click="handleDelete(scope.row.id)">
+                            删除
                         </el-button>
                     </template>
                 </el-table-column>
